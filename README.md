@@ -1,6 +1,6 @@
 # plex-lastfm-sync
 
-plex-lastfm-sync keeps your 5-star ratings in Plex and your loved tracks on Last.fm in sync. Rate a track 5 stars in Plexamp and it's loved on Last.fm within a minute. Run `sync` and each unrated track you loved on Last.fm gets 5 stars in Plex.
+plex-lastfm-sync keeps your 5-star ratings in Plex and your loved tracks on Last.fm in sync. Rate a track 5 stars in Plexamp and Plex's webhook tells the listener, which loves the track on Last.fm. Run `sync` and each unrated track you loved on Last.fm gets 5 stars in Plex.
 
 It's for anyone who runs their own Plex Media Server and has a Last.fm account.
 
