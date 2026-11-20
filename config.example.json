@@ -1,0 +1,21 @@
+{
+  "lastfm": {
+    "apiKey": "REPLACE_WITH_YOUR_LASTFM_API_KEY",
+    "sharedSecret": "REPLACE_WITH_YOUR_LASTFM_SHARED_SECRET",
+    "sessionKey": "",
+    "username": ""
+  },
+  "plex": {
+    "url": "http://127.0.0.1:32400",
+    "token": "REPLACE_WITH_YOUR_PLEX_TOKEN",
+    "serverUuid": "REPLACE_WITH_YOUR_PLEX_SERVER_ID",
+    "pageDelayMs": 100
+  },
+  "listener": {
+    "host": "127.0.0.1",
+    "port": 18094,
+    "pathToken": "REPLACE_WITH_A_RANDOM_STRING_OF_32_OR_MORE_CHARACTERS"
+  },
+  "stateFile": "/var/lib/plex-lastfm-sync/state.json",
+  "reportDir": "/var/lib/plex-lastfm-sync/reports"
+}

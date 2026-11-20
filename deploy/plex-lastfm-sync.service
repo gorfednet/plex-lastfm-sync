@@ -1,0 +1,50 @@
+[Unit]
+Description=Plex to Last.fm sync listener
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=plex-lastfm
+Group=plex-lastfm
+Environment=PLEX_LASTFM_CONFIG=/etc/plex-lastfm-sync/config.json
+ExecStart=/usr/bin/node /opt/plex-lastfm-sync/bin/plex-lastfm-sync.js serve
+Restart=on-failure
+RestartSec=5
+RestartPreventExitStatus=78
+
+# Small and polite: a webhook listener needs almost nothing.
+Nice=10
+MemoryMax=128M
+CPUQuota=20%
+TasksMax=32
+
+# Locked down: no new privileges, read-only system, private /tmp, only its own state directory writable.
+StateDirectory=plex-lastfm-sync
+ConfigurationDirectory=plex-lastfm-sync
+ConfigurationDirectoryMode=0700
+StateDirectoryMode=0700
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+LockPersonality=yes
+CapabilityBoundingSet=
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+UMask=0077
+ProtectKernelLogs=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+
+[Install]
+WantedBy=multi-user.target

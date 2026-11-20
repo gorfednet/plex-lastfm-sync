@@ -1,0 +1,18 @@
+{
+  "event": "media.rate",
+  "user": true,
+  "owner": true,
+  "rating": 10.0,
+  "Account": { "id": 1, "thumb": "https://example.invalid/a.png", "title": "test-owner" },
+  "Server": { "title": "test-server", "uuid": "test-server-uuid-0005" },
+  "Player": { "local": true, "publicAddress": "203.0.113.7", "title": "Plexamp", "uuid": "test-player-uuid" },
+  "Metadata": {
+    "librarySectionType": "artist",
+    "ratingKey": "101",
+    "type": "track",
+    "title": "Song One",
+    "grandparentTitle": "The Band",
+    "parentTitle": "First Album",
+    "userRating": 10.0
+  }
+}
