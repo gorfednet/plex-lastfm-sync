@@ -19,4 +19,4 @@ Keeps Plex 5-star ratings and Last.fm loves in step, in both directions. Public,
 
 ## Where the rules live
 
-- `CLAUDE.md`, `docs/backlog.json`, `docs/verification-rules.md`
+- `CLAUDE.md`, `docs/backlog.json`
