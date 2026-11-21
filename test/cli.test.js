@@ -151,6 +151,12 @@ test('--help prints the usage and exits 0', async () => {
   assert.match(r.out, /plex-lastfm-sync <command>/);
 });
 
+test('a bare invocation prints the usage and exits 1', async () => {
+  const r = await run([], { ...process.env });
+  assert.equal(r.status, 1);
+  assert.match(r.out, /plex-lastfm-sync <command>/);
+});
+
 test('serve and bulk refuse to run when the Last.fm session belongs to a different account', async () => {
   const e = await env(18999);
   try {

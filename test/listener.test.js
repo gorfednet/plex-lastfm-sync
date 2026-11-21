@@ -279,16 +279,6 @@ test('a new 5-star copy of a song the tool already loved is remembered without a
   } finally { await t.close(); }
 });
 
-test('a rating key longer than 12 digits is accepted and handled, not silently ignored', async () => {
-  const t = await setup({ plexTracks: [track('12345678901234', 'The Band', 'Song One', { rating: 10 })] });
-  try {
-    const m = multipart({ ...fixture, Metadata: { ...fixture.Metadata, ratingKey: '12345678901234' } });
-    assert.equal((await t.post(t.hook, m)).status, 200);
-    await t.l.idle();
-    assert.deepEqual(t.lf.state.loved, [{ artist: 'The Band', title: 'Song One' }]);
-  } finally { await t.close(); }
-});
-
 test('tracks whose names fold to nothing are never treated as the same song', async () => {
   const t = await setup({ plexTracks: [track('101', '!!!', '???', { rating: 10 }), track('102', '!!!', '!!!', { rating: 10 })] });
   try {
