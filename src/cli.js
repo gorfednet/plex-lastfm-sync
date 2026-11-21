@@ -124,7 +124,7 @@ export async function main(argv) {
     return { code: 1, serving: false };
   }
   const [cmd] = positionals;
-  if (!cmd || values.help) { log.out(HELP); return { code: cmd ? 0 : 1, serving: false }; }
+  if (!cmd || values.help) { log.out(HELP); return { code: 0, serving: false }; }
   try {
     const configPath = resolveConfigPath(values.config);
     if (cmd === 'init') await init(configPath);
