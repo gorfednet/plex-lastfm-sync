@@ -145,6 +145,12 @@ test('serve refuses to start on a damaged state file and leaves it untouched', a
   } finally { await e.close(); }
 });
 
+test('--help prints the usage and exits 0', async () => {
+  const r = await run(['--help'], { ...process.env });
+  assert.equal(r.status, 0);
+  assert.match(r.out, /plex-lastfm-sync <command>/);
+});
+
 test('serve and bulk refuse to run when the Last.fm session belongs to a different account', async () => {
   const e = await env(18999);
   try {

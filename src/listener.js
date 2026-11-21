@@ -48,7 +48,7 @@ export function createListener({ config, plex, lastfm, store, log }) {
   const server = createServer((req, res) => {
     respond(req, res).catch((e) => {
       log.error('request failed', { error: e.message });
-      if (!res.headersSent) { res.statusCode = 400; res.end(); } else res.destroy();
+      if (!res.headersSent) { res.statusCode = e.status ?? 400; res.end(); } else res.destroy();
     });
   });
 
@@ -78,7 +78,7 @@ export function createListener({ config, plex, lastfm, store, log }) {
     const scalar = (v) => typeof v === 'string' || typeof v === 'number';
     if (typeof payload.Server?.uuid !== 'string' || payload.Server.uuid !== config.plex.serverUuid) { log.warn('rejected: wrong Plex server'); return end(403); }
     if (payload.event !== 'media.rate') return end(200, 'ignored');
-    if (payload.Metadata?.type !== 'track' || !scalar(payload.Metadata?.ratingKey) || !/^\d{1,12}$/.test(String(payload.Metadata.ratingKey))) return end(200, 'ignored');
+    if (payload.Metadata?.type !== 'track' || !scalar(payload.Metadata?.ratingKey) || !/^\d+$/.test(String(payload.Metadata.ratingKey))) return end(200, 'ignored');
     if (config.plex.accountId !== undefined && !(scalar(payload.Account?.id) && String(payload.Account.id) === config.plex.accountId)) return end(200, 'ignored');
 
     end(200, 'ok');
