@@ -1,6 +1,6 @@
 {
   "name": "plex-lastfm-sync",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Keeps Plex 5-star track ratings and Last.fm loves in sync.",
   "license": "MIT",
   "type": "module",
